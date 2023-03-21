@@ -1,34 +1,22 @@
-import './App.css';
-import React, {useState, useEffect} from 'react';
-import SpotifyWebApi from 'spotify-web-api-js';
+import './App.css'
+import React, { useState, useEffect } from 'react'
+import SpotifyWebApi from 'spotify-web-api-js'
+import { getTokenFromUrl } from './utils'
 
-const spotifyApi = new SpotifyWebApi();
-
-
-const getTokenFromUrl = () => {
-  console.log(window.location.hash);
-  return window.location.hash
-    .substring(1)
-    .split("&")
-    .reduce((initial, item) => {
-      let parts = item.split("=");
-      initial[parts[0]] = decodeURIComponent(parts[1]);
-      return initial;
-    }, {});
-};
+const spotifyApi = new SpotifyWebApi()
 
 function App() {
-  const [spotifyToken, setSpotifyToken] = useState("");
-  const [nowPlaying, setNowPlaying] = useState({});
+  const [spotifyToken, setSpotifyToken] = useState('')
+  const [nowPlaying, setNowPlaying] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
 
-  useEffect(()=>{
-    console.log("This is what we derived from the URL:", getTokenFromUrl())
+  useEffect(() => {
+    console.log('This is what we derived from the URL:', getTokenFromUrl())
     const spotifyToken = getTokenFromUrl().access_token
-    window.location.hash = "";
-    console.log("This is our Spotify Token", spotifyToken);
+    window.location.hash = ''
+    console.log('This is our Spotify Token', spotifyToken)
 
-    if (spotifyToken){
+    if (spotifyToken) {
       setSpotifyToken(spotifyToken)
       spotifyApi.setAccessToken(spotifyToken)
       spotifyApi.getMe().then((user) => {
@@ -38,16 +26,15 @@ function App() {
     }
   })
 
-
-  const getNowPlaying = () =>{
+  const getNowPlaying = () => {
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
-      console.log(response);
+      console.log(response)
       setNowPlaying({
         name: response.item.name,
         albumArt: response.item.album.images[0].url
       })
-    })  
-}  
+    })
+  }
   return (
     <div className="App">
       {!loggedIn && <a href="http://localhost:8888">Login to Spotify</a>}
@@ -55,16 +42,13 @@ function App() {
         <>
           <div>Now Playing: {nowPlaying.name}</div>
           <div>
-            <img src={nowPlaying.albumArt} style={{height:150}}/>
+            <img src={nowPlaying.albumArt} style={{ height: 150 }} />
           </div>
         </>
       )}
-      {loggedIn && (
-          <button onClick={() => getNowPlaying()}>Check Now Playing</button>
-        )}
+      {loggedIn && <button onClick={() => getNowPlaying()}>Check Now Playing</button>}
     </div>
-  );
-  }
+  )
+}
 
-
-export default App;
+export default App
