@@ -1,7 +1,7 @@
 import './App.css'
 import React, { useState, useEffect } from 'react'
 import SpotifyWebApi from 'spotify-web-api-js'
-import { getTokenFromUrl } from './utils'
+import { getTokenFromUrl } from './utils/spotify-api'
 
 const spotifyApi = new SpotifyWebApi()
 
