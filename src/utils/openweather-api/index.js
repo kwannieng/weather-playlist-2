@@ -1,32 +1,36 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
-const URL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&appid=" + APIKey
-const APIKey = "1673070f077419daf583240cb1a971fe";
-let searchCity = '';
+const WeatherSearch = () => {
+  const [city, setCity] = useState("");
+  const [temp, setTemp] = useState(0);
 
+  const APIKey = "1673070f077419daf583240cb1a971fe";
 
-function search () {
-    const [ temp , setTemp] = useState(0)
+  const fetchData = async () => {
+    const URL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
+    const result = await fetch(URL);
+    result.json().then(json => {
+      setTemp((json.list[0].main.temp - 273.15).toFixed(2));
+    });
+  }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await fetch (URL)
-            result.json().then(json => {
-                setTemp(json.main.temp - 273.15)
-            });
-        }
-        fetchData();
-    }, []);
+  const click = () => {
+    fetchData();
+  }
 
-    
+  const cityChange = event => {
+    setCity(event.target.value);
+  }
 
+  return (
+    <div>
+      <input className="Usercity" onChange={cityChange} type="text" value={city} />
+      <button onClick={click}>Confirm</button>
 
-//     let fIconCode1 = response.list[1].weather[0].icon
-//   console.log(fIconCode1)
-
-//   let fIconURL1 = "https://openweathermap.org/img/wn/" + fIconCode1 + "@2x.png";
-
-
+      Hello {city}!
+      It's {temp}°C right now.
+    </div>
+  );
 }
 
-export default search;
+export default WeatherSearch;

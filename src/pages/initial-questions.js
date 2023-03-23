@@ -1,38 +1,32 @@
-import { useState } from "react";
-import Typed from "react-typed";
-import { Question1, Question2, Greeting} from "../components/questions";
+import React, { Component } from "react";
+import Question1 from "../lib/question1";
+import Question2 from "../lib/question2";
 
+class Questions extends Component {
+  state = {
+    currentQuestion: <Question1 />
+  };
 
-const Initialquestions =() => {
-    const [city, setCity] = useState("");
-    const click = () => {
-        alert(city)
-    }
-    const cityChange = event =>{
-        setCity(event.target.value)
-    }
-    
-    return (
-      <div>
-        <Typed
-            strings={[
-                "Let's create the best music playlist that match the current weather!",
-                "First of all, please tell me which city are staying right now?"
-                ]}
-                typeSpeed={40}
-            >
-        </Typed>
+  handleQuestionChange = question => {
+    this.setState({ currentQuestion: question });
+  };
 
-        <div>
-        <input className="Usercity" onChange={cityChange}  type="text" value = {city}/>
-        <button onClick = {click}>Confirm</button>
-        </div>
+  renderQuestion = () => {
+    return <div>
+      <Question2 />
+    </div>;
+  }
 
+  handleClick = () => {
+    this.handleQuestionChange(this.renderQuestion());
+  }
 
-      </div>
-
-
-    );
+  render() {
+    return <div>
+        {this.state.currentQuestion}
+        <button onClick={this.handleClick}>Next</button>
+    </div>;
+  }
 }
 
-export default Initialquestions;
+export default Questions;
