@@ -11,6 +11,7 @@ const WeatherSearch = () => {
     const result = await fetch(URL);
     result.json().then(json => {
       setTemp((json.list[0].main.temp - 273.15).toFixed(2));
+      localStorage.setItem("temperature", json)
     });
   }
 
