@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import SpotifyWebApi from 'spotify-web-api-js'
-// import { getTokenFromUrl } from './utils/spotify-api'
+import React, { useState, useEffect } from 'react';
+import SpotifyWebApi from 'spotify-web-api-js';
+
 
 function SpotifyApi() {
   const spotifyApi = new SpotifyWebApi()
@@ -45,6 +45,7 @@ function SpotifyApi() {
       })
     })
   }
+
   return (
     <div className="App">
       {!loggedIn && <a href="http://localhost:8888">Login to Spotify</a>}
@@ -57,6 +58,8 @@ function SpotifyApi() {
         </>
       )}
       {loggedIn && <button onClick={() => getNowPlaying()}>Check Now Playing</button>}
+      {loggedIn && <button onClick={handleSearch}>Search</button>}
+      {loggedIn && <button onClick={handleCreatePlaylist}>Create Playlist</button>}
     </div>
   )
 }
@@ -75,3 +78,6 @@ export default SpotifyApi;
 //       return initial
 //     }, {})
 // }
+
+// {loggedIn && <button onClick={handleSearch}>Search</button>}
+// {loggedIn && <button onClick={handleCreatePlaylist}>Create Playlist</button>}

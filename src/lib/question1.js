@@ -8,6 +8,7 @@ const Question1 =() => {
         <Typed
             strings={[
                 "Let's create the best music playlist that match the current weather!",
+                "First of all, please tell me which city are you staying now?"
                 ]}
                 typeSpeed={40}
             >
