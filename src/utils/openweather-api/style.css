@@ -27,3 +27,9 @@
     padding-left:10px;
     padding-right:10px;
 }
+
+.nextbutton{
+    background-color: rgba(229, 209, 208, 0.509);
+    color: rgba(245, 228, 215);
+    margin-left: 70%;
+}

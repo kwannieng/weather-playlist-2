@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './style.css';
-import SpotifyApi from "../spotify-api";
+import { Link, NavLink } from 'react-router-dom';
 let valence
 
 const WeatherSearch = () => {
@@ -43,8 +43,11 @@ const WeatherSearch = () => {
           <div className="weather">
             Hello {city}!
             It's {temp}°C right now.
-            <SpotifyApi/>
+
           </div>
+          <Link to="/Login">
+          <button className="nextbutton">Next</button>
+          </Link>
         </>
       )}
 
