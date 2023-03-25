@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SpotifyApi from "../spotify-api";
+import './style.css'
 let valency
 
 const WeatherSearch = () => {
@@ -35,11 +36,11 @@ const WeatherSearch = () => {
   return (
     <div>
       {!search && <input className="Usercity" onChange={cityChange} type="text" value={city} />}
-      {!search && <button onClick={click}>Confirm</button>}
+      {!search && <button className="citybutton" onClick={click}>Confirm</button>}
 
       {search && (
         <>
-          <div>
+          <div className="weather">
             Hello {city}!
             It's {temp}°C right now.
 

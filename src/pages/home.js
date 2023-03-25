@@ -8,18 +8,17 @@ const Home = () =>{
 return <div>
     <Header/>
     <img src={hero} alt="hero" className="hero"/>
-    <div>
+    <div className="intro">
         <h1>Weather Playlist</h1>
-    </div>
-
-    <div>
+        <div>
         <p>
-           Welcome! Let's create a music playlist that match the weather.
-           <Link to="Questions">
-           <button>Go</button>
-           </Link>
+           Welcome! 
+           Let's create a music playlist that match the weather.
         </p>
-        
+        <Link to="Questions">
+           <button>Start</button>
+        </Link>
+    </div>
     </div>
 </div>
 }

@@ -1,29 +1,51 @@
 .hero {
     height: 100vh;
-    position: relative right;
+    position: relative;
     margin-top: 0;
     margin-bottom: -2rem;
-    z-index: 2;
     display: block;
     background-color: rgb(245, 228, 215);
   }
   
-h1{
-    display: inline;
-    position: relative;
-    color: rgb(115, 135, 123);
+.intro{
+    color: rgb(245, 228, 215);
+    position: absolute;
+    top: 180px;
+    right: 0;
+    margin-right: 5%;
+    border-right: 5%;
+    width: 40rem;
+}
+
+.intro>h1{ 
     background-color: transparent;
-    font-size: 5em;
+    font-size: 5rem;
   }
 
   p{
-    color: rgb(115, 135, 123);
     font-size: 2em;
   }
 
+button{
+    color:rgb(245, 228, 215);
+    border-color: rgb(245, 228, 215);
+    border-radius: 10%;
+    background-color: rgba(115, 135, 123, 0.58);
+    margin-left: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+    height: 50px;
+    font-size: 1.5em;
+}
+
+button:hover{
+    background-color: rgba(229, 209, 208, 0.865);
+    color:rgb(115, 135, 123);
+}
+
 @media screen and (max-width: 1300px){
     h1{
-      font-size: 12em;
+      font-size: 4em;
     }
     .hero {
       height: 50%;
@@ -33,7 +55,7 @@ h1{
   
 @media screen and (max-width: 800px){
     h1{
-      font-size: 6em;
+      font-size: 1em;
     }
     .hero {
       height: 20%;

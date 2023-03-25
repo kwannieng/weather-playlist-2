@@ -12,7 +12,13 @@ background-color: transparent;
 }
 
 .navbar{
-  background-color:rgb(131, 151, 136);
+  background-color:rgb(229, 209, 208);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+a{
+  color: rgb(115, 135, 123) !important;
 }
 
 ul{
@@ -22,4 +28,9 @@ ul{
 
 .navbar-nav>li>a {
     font-weight: bold;
+}
+
+.nav-link{
+    padding: 0.3125rem;
+    display:inline;
 }

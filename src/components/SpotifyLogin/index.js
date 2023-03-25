@@ -1,9 +1,9 @@
-// import SpotifyApi from "../../utils/spotify-api";
+import SpotifyApi from "../../utils/spotify-api";
 
-// const Login = () => {
-//     return <div>
-//         <SpotifyApi/>    
-//         </div>
-// }
+const Login = () => {
+    return <div>
+        <SpotifyApi/>    
+        </div>
+}
 
-// export default Login;
+export default Login;
