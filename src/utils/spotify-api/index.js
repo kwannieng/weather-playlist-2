@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
-
+import Typed from "react-typed";
 
 function SpotifyApi() {
   const spotifyApi = new SpotifyWebApi()
@@ -48,7 +48,16 @@ function SpotifyApi() {
 
   return (
     <div className="App">
+      {!loggedIn && 
+         <Typed
+            strings={[
+                "Please login to your Spotify account, we will then create the best playlist for you!"
+                ]}
+                typeSpeed={40}
+            >
+        </Typed>}
       {!loggedIn && <a href="http://localhost:8888">Login to Spotify</a>}
+
       {loggedIn && (
         <>
           <div>Now Playing: {nowPlaying.name}</div>
@@ -58,26 +67,8 @@ function SpotifyApi() {
         </>
       )}
       {loggedIn && <button onClick={() => getNowPlaying()}>Check Now Playing</button>}
-      {loggedIn && <button onClick={handleSearch}>Search</button>}
-      {loggedIn && <button onClick={handleCreatePlaylist}>Create Playlist</button>}
     </div>
   )
 }
 
 export default SpotifyApi;
-
-
-// export const getTokenFromUrl = () => {
-//   console.log(window.location.hash)
-//   return window.location.hash
-//     .substring(1)
-//     .split('&')
-//     .reduce((initial, item) => {
-//       let parts = item.split('=')
-//       initial[parts[0]] = decodeURIComponent(parts[1])
-//       return initial
-//     }, {})
-// }
-
-// {loggedIn && <button onClick={handleSearch}>Search</button>}
-// {loggedIn && <button onClick={handleCreatePlaylist}>Create Playlist</button>}

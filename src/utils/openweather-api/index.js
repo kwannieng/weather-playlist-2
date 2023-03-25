@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import SpotifyApi from "../spotify-api";
 let valency
 
 const WeatherSearch = () => {
   const [city, setCity] = useState("");
   const [temp, setTemp] = useState(0);
-  const [search, setSearch] = useState(false)
+  const [search, setSearch] = useState(false);
 
   const APIKey = "1673070f077419daf583240cb1a971fe";
 
@@ -41,6 +42,8 @@ const WeatherSearch = () => {
           <div>
             Hello {city}!
             It's {temp}°C right now.
+
+            <SpotifyApi/> 
           </div>
         </>
       )}

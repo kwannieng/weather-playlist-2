@@ -1,0 +1,41 @@
+.hero {
+    height: 100vh;
+    position: relative right;
+    margin-top: 0;
+    margin-bottom: -2rem;
+    z-index: 2;
+    display: block;
+    background-color: rgb(245, 228, 215);
+  }
+  
+h1{
+    display: inline;
+    position: relative;
+    color: rgb(115, 135, 123);
+    background-color: transparent;
+    font-size: 5em;
+  }
+
+  p{
+    color: rgb(115, 135, 123);
+    font-size: 2em;
+  }
+
+@media screen and (max-width: 1300px){
+    h1{
+      font-size: 12em;
+    }
+    .hero {
+      height: 50%;
+    }
+
+  }
+  
+@media screen and (max-width: 800px){
+    h1{
+      font-size: 6em;
+    }
+    .hero {
+      height: 20%;
+    }
+  }
