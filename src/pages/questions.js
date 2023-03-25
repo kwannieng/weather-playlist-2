@@ -1,36 +1,26 @@
-import React, { Component,useState } from "react";
-import Question1 from "../components/questions";
+import React, { useState } from "react";
+import Typed from "react-typed";
 import Header from "../components/Header";
-import Login from "../components/SpotifyLogin";
+import WeatherSearch from "../utils/openweather-api";
 
 
 
-class Questions extends Component {
-  state = {
-    currentQuestion: <Question1 />
-  };
-
-  handleQuestionChange = question => {
-    this.setState({ currentQuestion: question });
-  };
-
-  renderQuestion = () => {
-    return <div>
-      <Header/>
-      <Login/>
-    </div>;
-  }
-
-  handleClick = () => {
-    this.handleQuestionChange(this.renderQuestion());
-  }
-
-  render() {
+const Questions =() =>{ 
     return <div>
         <Header/>
-        {this.state.currentQuestion}
-    </div>;
+
+        <div className="content">
+        <Typed
+            strings={[
+                "Let's create the best music playlist that match the current weather! </br> First of all, please tell me which city are you staying now?"
+                ]}
+                typeSpeed={40}
+            >
+        </Typed>
+        </div>
+
+       <WeatherSearch/>
+      </div>
   }
-}
 
 export default Questions;

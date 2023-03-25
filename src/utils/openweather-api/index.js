@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import './style.css';
 import SpotifyApi from "../spotify-api";
-import './style.css'
-let valency
+let valence
 
 const WeatherSearch = () => {
   const [city, setCity] = useState("");
@@ -16,11 +16,11 @@ const WeatherSearch = () => {
     localStorage.setItem("city", city)
     result.json().then(json => {
       setTemp((json.list[0].main.temp - 273.15).toFixed(2));
-      valency = ((json.list[0].main.temp - 273.15)/60).toFixed(1);
-      localStorage.setItem("Valency", valency)
+      valence = ((json.list[0].main.temp - 273.15)/60).toFixed(1);
+      localStorage.setItem("Valence", valence)
     });
     
-    setSearch(true)
+    setSearch(true);
   }
 
   const click = () => {
@@ -43,8 +43,7 @@ const WeatherSearch = () => {
           <div className="weather">
             Hello {city}!
             It's {temp}°C right now.
-
-            <SpotifyApi/> 
+            <SpotifyApi/>
           </div>
         </>
       )}
