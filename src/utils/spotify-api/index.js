@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import Typed from "react-typed";
-import './style.css'
+import './style.css';
+
 
 function SpotifyApi() {
   const spotifyApi = new SpotifyWebApi()
@@ -37,6 +38,7 @@ function SpotifyApi() {
     }
   })
 
+
   const getNowPlaying = () => {
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
       console.log(response)
@@ -48,7 +50,7 @@ function SpotifyApi() {
   }
 
   return (
-    <div className="App">
+    <div className='content'>
       {!loggedIn && 
          <Typed
             strings={[
@@ -58,16 +60,19 @@ function SpotifyApi() {
             >
         </Typed>}
       {!loggedIn && <a className='logintag' href="http://localhost:8888">Login to Spotify</a>}
-
+      
       {loggedIn && (
-        <>
-          <div>Now Playing: {nowPlaying.name}</div>
-          <div>
-            <img src={nowPlaying.albumArt} style={{ height: 150 }} />
-          </div>
-        </>
-      )}
-      {loggedIn && <button onClick={() => getNowPlaying()}>Check Now Playing</button>}
+      
+      <>
+      <div className="wrapper">
+          <div className='albumArt'><img src={nowPlaying.albumArt}/></div>
+          <div className='nowtag'>Now Playing:</div>
+          <div>{nowPlaying.name}</div>
+        </div>
+      </>
+    )}
+      {loggedIn && <button onClick={() => getNowPlaying()} className="checkbutton">Check Now Playing</button>}
+
     </div>
   )
 }
