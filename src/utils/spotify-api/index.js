@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import Typed from 'react-typed';
+import './style.css';
 
 // import { getTokenFromUrl } from './utils/spotify-api'
 
@@ -57,7 +58,7 @@ function SpotifyApi() {
                 typeSpeed={40}
             >
         </Typed>}
-      {!loggedIn && <a className='logintag' href="http://localhost:8888">Login to Spotify</a>}
+      {!loggedIn && <a className='login' href="http://localhost:8888">Login to Spotify</a>}
       
       {loggedIn && (
       
