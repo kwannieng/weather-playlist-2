@@ -15,7 +15,7 @@ return <div>
         <div>
         <p>
            Welcome! 
-           Let's create a music playlist that match the weather.
+           Let's create a music playlist that matches the weather.
         </p>
         <Link to="Questions">
            <button>Start</button>

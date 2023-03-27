@@ -12,7 +12,7 @@ const Questions =() =>{
         <div className="content">
         <Typed
             strings={[
-                "Let's create the best music playlist that match the current weather! </br> First of all, please tell me which city are you staying now?"
+                "Let's create the best music playlist that matches the current weather! </br> First of all, please tell me which city are you staying now?"
                 ]}
                 typeSpeed={40}
             >

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
-import Typed from "react-typed";
-import './style.css';
+import Typed from 'react-typed';
 
+// import { getTokenFromUrl } from './utils/spotify-api'
 
 function SpotifyApi() {
   const spotifyApi = new SpotifyWebApi()
@@ -38,7 +38,6 @@ function SpotifyApi() {
     }
   })
 
-
   const getNowPlaying = () => {
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
       console.log(response)
@@ -48,7 +47,6 @@ function SpotifyApi() {
       })
     })
   }
-
   return (
     <div className='content'>
       {!loggedIn && 

@@ -1,9 +1,7 @@
+import SpotifyApi from "../../utils/spotify-api";
+
+
 const createPlaylist = async (playlistName) => {
-    const url = "https://api.spotify.com/v1/me/playlists";
-    const headers = {
-      Authorization: `Bearer ${access_token}`,
-      "Content-Type": "application/json",
-    };
     const data = {
       name: playlistName,
     };
