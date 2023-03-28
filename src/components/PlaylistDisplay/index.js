@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import GetTrackList from '../../utils/GetTrackList';
 
-
 class TrackList extends Component {
   constructor(props) {
     super(props);
@@ -21,16 +20,14 @@ render() {
       <div className="row d-flex justify-content-around">   
       <h1>Weather Playlist</h1>
       </div>
-      <div className="row d-flex justify-content-between text-center" id="diaryGrid">
-        <div className="col-3 mx-auto mb-4">
-        <div className='card'>
-        {this.state.tracks.map(track => (
-          <div key={track.id} className='card-body'>
-            <img src={track.albumArt} alt={track.name} className='card-img-bottom'/>
-            <h2 className='card-title'>{track.track} by {track.artist}</h2>
-          </div>
-        ))}
-        </div>
+      <div className="row d-flex justify-content-around ">
+        <div className='col-2'>
+            {this.state.tracks.map(track => (
+            <div key={track.id} >
+            <img src={track.albumArt} alt={track.name}/>
+            <h2>{track.track} by {track.artist}</h2>
+            </div>
+            ))}
         </div>
       </div>
     </div>

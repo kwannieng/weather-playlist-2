@@ -24,8 +24,8 @@ const TrackSearch = () => {
 
  return (
     <div>
-      <TrackList/>
       <button>Add to my Spotify</button>
+      <TrackList/>
     </div>
   );
 }

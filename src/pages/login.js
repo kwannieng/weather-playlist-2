@@ -8,7 +8,6 @@ const Login = () =>{
     return <div>
         <Header/>
         <TrackSearch/>
-      
     </div>
     }
     
