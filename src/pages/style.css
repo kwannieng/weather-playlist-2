@@ -5,7 +5,7 @@
     margin-bottom: -2rem;
     display: block;
     background-color: rgb(245, 228, 215);
-    width: 70%;
+    width: 75%;
   }
   
 .intro{
@@ -53,6 +53,16 @@ button:hover{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: rgb(245, 228, 215);
 }
+
+.loginbutton{
+  background-color:rgb(245, 228, 215);
+  border-color: rgb(245, 228, 215);
+  border-radius: 5%;
+  margin-left: 1%;
+  padding:8px;
+  font-size: 1.5em;
+}
+
 
 @media screen and (max-width: 1300px){
     h1{

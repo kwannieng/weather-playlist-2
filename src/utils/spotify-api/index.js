@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import SpotifyWebApi from 'spotify-web-api-js';
-import Typed from 'react-typed';
 import './style.css';
 
-// import { getTokenFromUrl } from './utils/spotify-api'
 
 function SpotifyApi() {
   const spotifyApi = new SpotifyWebApi()
   const [spotifyToken, setSpotifyToken] = useState('')
   const [nowPlaying, setNowPlaying] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
+  const [topArtists, setTopArtists] = useState({});
 
   const getTokenFromUrl = () => {
-    console.log(window.location.hash)
     return window.location.hash
       .substring(1)
       .split('&')
@@ -34,44 +33,26 @@ function SpotifyApi() {
       spotifyApi.setAccessToken(spotifyToken)
       spotifyApi.getMe().then((user) => {
         console.log(user)
+        localStorage.setItem("userId", user.id)
       })
       setLoggedIn(true)
     }
   })
 
-  const getNowPlaying = () => {
-    spotifyApi.getMyCurrentPlaybackState().then((response) => {
-      console.log(response)
-      setNowPlaying({
-        name: response.item.name,
-        albumArt: response.item.album.images[0].url
-      })
-    })
-  }
-  return (
-    <div className='content'>
-      {!loggedIn && 
-         <Typed
-            strings={[
-                "Please login to your Spotify account, we will then create the best playlist for you!"
-                ]}
-                typeSpeed={40}
-            >
-        </Typed>}
-      {!loggedIn && <a className='login' href="http://localhost:8888">Login to Spotify</a>}
+ return (
+    <div>
+      {!loggedIn && (
+        <p className='logintext'>
+          Please login to your Spotify account, we will then create the best playlist for you!
+        </p>
+      )}
+      {!loggedIn && <a className='loginbutton' href="http://localhost:8888">Login to Spotify</a>}
       
       {loggedIn && (
-      
-      <>
-      <div className="wrapper">
-          <div className='albumArt'><img src={nowPlaying.albumArt}/></div>
-          <div className='nowtag'>Now Playing:</div>
-          <div>{nowPlaying.name}</div>
-        </div>
-      </>
-    )}
-      {loggedIn && <button onClick={() => getNowPlaying()} className="checkbutton">Check Now Playing</button>}
-
+        <Link to="Questions">
+        <button>Start</button>
+        </Link>
+      )}
     </div>
   )
 }

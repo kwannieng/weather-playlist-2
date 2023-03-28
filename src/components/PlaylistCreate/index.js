@@ -1,54 +1,26 @@
-import SpotifyApi from "../../utils/spotify-api";
+
+// const playlistId = 'your_playlist_id_here';
+// const trackUris = [
+//   // 'spotify:track:4iV5W9uYEdYUVa79Axb7Rh',
+//   // 'spotify:track:1301WleyT98MSxVHPZCA6M',
+//   // 'spotify:track:3KkXRkHbMCARz0aVfEt68P',
+//   // 'spotify:track:7eJMfftS33KTjuF7lTsMCx',
+//   // 'spotify:track:2IRZnDFmlqMuOrYOLnZZyc',
+//   // 'spotify:track:6WrI0LAC5M1Rw2MnX2ZvEg',
+//   // 'spotify:track:2VxeLyX666F8uXCJ0dZF8B',
+//   // 'spotify:track:1BnYZYahZkaTUrNznrahQZ',
+//   // 'spotify:track:0d2iYfpKoM0QCKvcLCkBao',
+//   // 'spotify:track:6ocbgoVGwYJhOv1GgI9NsF'
+// ];
+
+// spotifyApi.addTracksToPlaylist(playlistId, trackUris)
+//   .then(function(data) {
+//     console.log('Added 10 tracks to playlist!');
+//     console.log(data);
+//   }, function(err) {
+//     console.log('Something went wrong!', err);
+//   });
+// }
 
 
-const createPlaylist = async (playlistName) => {
-    const data = {
-      name: playlistName,
-    };
-  
-    try {
-      const response = await axios.post(url, data, { headers });
-      return response.data.id;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
-  const searchTracks = async (valence, genre) => {
-    const url = `https://api.spotify.com/v1/search?type=track&q=genre%3A%22${genre}%22%20valence%3A${valence}`;
-    const headers = {
-      Authorization: `Bearer ${access_token}`,
-      "Content-Type": "application/json",
-    };
-  
-    try {
-      const response = await axios.get(url, { headers });
-      return response.data.tracks.items.map((item) => item.uri);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const addTracksToPlaylist = async (playlistId, uris) => {
-    const url = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
-    const headers = {
-      Authorization: `Bearer ${access_token}`,
-      "Content-Type": "application/json",
-    };
-    const data = {
-      uris: uris,
-    };
-  
-    try {
-      await axios.post(url, data, { headers });
-      console.log("Tracks added to playlist!");
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
-  const handleSearch = async () => {
-    const playlistName = `${genre} - Valence ${valence.toFixed(1)}`;
-    const playlistId = await createPlaylist(playlistName);
-    const uris = await searchTracks(valence, genre);
-  }  
+// export default CreatePlaylist;
