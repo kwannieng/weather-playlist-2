@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GetTrackList from '../../utils/GetTrackList';
+import './style.css';
 
 class TrackList extends Component {
   constructor(props) {
@@ -17,15 +18,13 @@ class TrackList extends Component {
 render() {
   return (
     <div className='container-fluid'>
-      <div className="row d-flex justify-content-around">   
-      <h1>Weather Playlist</h1>
-      </div>
-      <div className="row d-flex justify-content-around ">
-        <div className='col-2'>
+    <h1>My Weather Playlist</h1>
+      <div className="d-flex  justify-content-around">   
+        <div className="row">
             {this.state.tracks.map(track => (
-            <div key={track.id} >
-            <img src={track.albumArt} alt={track.name}/>
-            <h2>{track.track} by {track.artist}</h2>
+            <div key={track.track} className='col-4 song'>
+            <img src={track.albumArt} alt={track.name} className='albumArt'/>
+            <h2 className='track'>{track.track} by {track.artist}</h2>
             </div>
             ))}
         </div>

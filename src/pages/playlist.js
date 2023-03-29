@@ -1,22 +1,13 @@
-// import SpotifyApi from "../../utils/spotify-api";
-// import { GetNowPlaying } from '../../components/SpotifyLogin';
-// import { Component } from "react";
+import Header from "../components/Header";
+import React from "react";
+import './style.css';
+import TrackSearch from "../utils/SpotifySearch";
 
-
-const Playlist = () => {
-        return <div>
-
-        </div>
-
-}
-
-
+const Playlist = () =>{
+    return <div>
+        <Header/>
+        <TrackSearch/>
+    </div>
+    }
+    
 export default Playlist;
-
-/* //       <>
-//         <div>Now Playing: {{GetNowPlaying}.nowPlaying.name}</div>
-//         <div>
-//           <img src={{GetNowPlaying}.nowPlaying.albumArt} style={{ height: 150 }} />
-//         </div>
-//       </>
-       */

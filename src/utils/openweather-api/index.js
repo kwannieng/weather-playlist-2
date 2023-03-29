@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './style.css';
-import { Link, NavLink } from 'react-router-dom';
-let valence
+import { Link } from 'react-router-dom';
+let energy
 
 const WeatherSearch = () => {
   const [city, setCity] = useState("");
@@ -15,9 +15,9 @@ const WeatherSearch = () => {
     const result = await fetch(URL);
     localStorage.setItem("city", city)
     result.json().then(json => {
-      setTemp((json.list[0].main.temp - 273.15).toFixed(2));
-      valence = ((json.list[0].main.temp - 273.15)/60).toFixed(1);
-      localStorage.setItem("Valence", valence)
+      setTemp((json.list[0].main.temp - 273.15).toFixed(0));
+      energy = ((json.list[0].main.temp - 273.15)/60).toFixed(1);
+      localStorage.setItem("Energy", energy)
     });
     
     setSearch(true);
@@ -40,13 +40,13 @@ const WeatherSearch = () => {
 
       {search && (
         <>
-          <div className="weather">
-            Hello {city}!
-            It's {temp}°C right now.
-
+          <div>
+          <p className="weather">Hello {city}! It's {temp}°C right now. How do you like the weather? Do you find yourslef a bit lazy?
+          Let's create a playlist with the best vibe!</p>
           </div>
-          <Link to="/Login">
-          <button className="nextbutton">Next</button>
+
+          <Link to="/Playlist">
+          <button className="nextbutton">Go</button>
           </Link>
         </>
       )}

@@ -7,7 +7,6 @@ import './style.css';
 function SpotifyApi() {
   const spotifyApi = new SpotifyWebApi()
   const [spotifyToken, setSpotifyToken] = useState('')
-  const [nowPlaying, setNowPlaying] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   const [topArtists, setTopArtists] = useState({});
 

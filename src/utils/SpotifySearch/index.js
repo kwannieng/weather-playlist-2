@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import "bootstrap/dist/css/bootstrap.min.css";
-import TrackList from '../PlaylistDisplay';
+import TrackList from '../../components/PlaylistDisplay';
+import './style.css';
+import PlaylistCreate from '../PlaylistCreate'
+
 
 const spotifyApi = new SpotifyWebApi;
 
 const TrackSearch = () => {
+
   const [topTrack, setTopTrack] = useState({});
   const [topGenre, setTopGenre] = useState({});
   const [topArtist, setTopArtist] = useState({});
@@ -23,8 +27,8 @@ const TrackSearch = () => {
     })
 
  return (
-    <div>
-      <button>Add to my Spotify</button>
+    <div className='d-flex flex-row-reverse'>
+      <button className='p-1' onClick={() => PlaylistCreate()}>Add to Spotify</button>
       <TrackList/>
     </div>
   );
