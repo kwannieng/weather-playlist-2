@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import SpotifyWebApi from 'spotify-web-api-js'
-// import { getTokenFromUrl } from './utils/spotify-api'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import SpotifyWebApi from 'spotify-web-api-js';
+import './style.css';
+
 
 function SpotifyApi() {
   const spotifyApi = new SpotifyWebApi()
   const [spotifyToken, setSpotifyToken] = useState('')
-  const [nowPlaying, setNowPlaying] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
+  const [topArtists, setTopArtists] = useState({});
 
   const getTokenFromUrl = () => {
-    console.log(window.location.hash)
     return window.location.hash
       .substring(1)
       .split('&')
@@ -31,47 +32,28 @@ function SpotifyApi() {
       spotifyApi.setAccessToken(spotifyToken)
       spotifyApi.getMe().then((user) => {
         console.log(user)
+        localStorage.setItem("userId", user.id)
       })
       setLoggedIn(true)
     }
   })
 
-  const getNowPlaying = () => {
-    spotifyApi.getMyCurrentPlaybackState().then((response) => {
-      console.log(response)
-      setNowPlaying({
-        name: response.item.name,
-        albumArt: response.item.album.images[0].url
-      })
-    })
-  }
-  return (
-    <div className="App">
-      {!loggedIn && <a href="http://localhost:8888">Login to Spotify</a>}
-      {loggedIn && (
-        <>
-          <div>Now Playing: {nowPlaying.name}</div>
-          <div>
-            <img src={nowPlaying.albumArt} style={{ height: 150 }} />
-          </div>
-        </>
+ return (
+    <div>
+      {!loggedIn && (
+        <p className='logintext'>
+          Please login to your Spotify account, we will then create the best playlist for you!
+        </p>
       )}
-      {loggedIn && <button onClick={() => getNowPlaying()}>Check Now Playing</button>}
+      {!loggedIn && <a className='loginbutton' href="http://localhost:8888">Login to Spotify</a>}
+      
+      {loggedIn && (
+        <Link to="Questions">
+        <button>Start</button>
+        </Link>
+      )}
     </div>
   )
 }
 
 export default SpotifyApi;
-
-
-// export const getTokenFromUrl = () => {
-//   console.log(window.location.hash)
-//   return window.location.hash
-//     .substring(1)
-//     .split('&')
-//     .reduce((initial, item) => {
-//       let parts = item.split('=')
-//       initial[parts[0]] = decodeURIComponent(parts[1])
-//       return initial
-//     }, {})
-// }
