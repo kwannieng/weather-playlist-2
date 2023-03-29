@@ -8,7 +8,7 @@ function SpotifyApi() {
   const spotifyApi = new SpotifyWebApi()
   const [spotifyToken, setSpotifyToken] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
-  const [topArtists, setTopArtists] = useState({});
+
 
   const getTokenFromUrl = () => {
     return window.location.hash
